@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kelvin Lai | Fractional CFO</title>
+  <title>Kelvin Lai | Transformational CFO | Los Angeles, CA</title>
+  <meta name="description" content="Kelvin Lai is a Transformational CFO based in Los Angeles with 30+ years of financial leadership across PE-backed, high-growth technology, insurance, real estate, healthcare, and construction organizations. Trusted CEO partner driving M&A, scalable finance infrastructure, and double-digit revenue growth." />
+  <meta name="keywords" content="CFO, Fractional CFO, Transformational CFO, Financial Leadership, Los Angeles, PE-backed, M&A, Healthcare, Real Estate, Technology, Construction, Property Management" />
+  <meta property="og:title" content="Kelvin Lai | Transformational CFO" />
+  <meta property="og:description" content="Hands-on, operator-style Chief Financial Officer with 30+ years of leadership. Trusted CEO partner for PE-backed and high-growth organizations." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%230b1f3a'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia%2C serif' font-size='26' font-weight='700' fill='%23c9a84c'%3EKL%3C/text%3E%3C/svg%3E" />
   <style>
     /* ── Reset & Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -432,15 +438,62 @@
     footer span { color: var(--gold); }
 
     /* ── Responsive ── */
+    /* ── Hamburger ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
-      .nav-links { gap: 1.2rem; }
+      .hamburger { display: flex; }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: rgba(11, 31, 58, 0.98);
+        backdrop-filter: blur(6px);
+        padding: 1rem 0;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links li { width: 100%; }
+
+      .nav-links a {
+        display: block;
+        padding: 0.9rem 2rem;
+        font-size: 0.9rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+
       .about-inner { grid-template-columns: 1fr; gap: 2rem; }
       .about-stats { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 480px) {
-      .nav-links { display: none; }
       .about-stats { grid-template-columns: 1fr; }
     }
   </style>
@@ -450,7 +503,10 @@
   <!-- ── Navigation ── -->
   <nav>
     <a href="#hero" class="nav-logo">Kelvin Lai</a>
-    <ul class="nav-links">
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#expertise">Expertise</a></li>
       <li><a href="#industries">Industries</a></li>
@@ -619,5 +675,20 @@
     <p>&copy; 2026 <span>Kelvin Lai</span> &nbsp;·&nbsp; Fractional CFO &nbsp;·&nbsp; Los Angeles, CA &nbsp;·&nbsp; All rights reserved.</p>
   </footer>
 
+  <script>
+    const btn = document.getElementById('hamburger');
+    const menu = document.getElementById('nav-links');
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+    });
+    // Close menu when a link is clicked
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        btn.classList.remove('open');
+        menu.classList.remove('open');
+      });
+    });
+  </script>
 </body>
 </html>
